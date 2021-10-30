@@ -19,10 +19,15 @@ class PersonagemSerializer(serializers.ModelSerializer):
                                                queryset=Grupo.objects.all())
     raca = serializers.PrimaryKeyRelatedField(read_only=False,
                                               queryset=Raca.objects.all())
+    imc = serializers.SerializerMethodField('calc_imc')
+
+    def calc_imc(self, obj):
+        return obj.peso / (obj.altura**2)
 
     class Meta:
         model = Personagem
+        read_only_fields = ['imc']
         fields = ['pk', 'nome', 'grupo', 'raca',
                   'apelidos', 'genero', 'idade',
                   'episodio_estreia', 'altura',
-                  'peso', 'imagem']
+                  'peso', 'imagem', 'imc']
