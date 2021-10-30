@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'kimetsu_app'
+    'kimetsu_app',
+    'django_filters'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
